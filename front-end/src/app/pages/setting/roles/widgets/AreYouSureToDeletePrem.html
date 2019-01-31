@@ -1,0 +1,17 @@
+<div class="modal-content">
+  <div class="modal-header bg-warning" style="text-align: center;">
+    <i class="ion-android-warning modal-icon"></i><span> אזהרה</span>
+  </div>
+  <div ng-model="GroupData" class="modal-body text-center">לאחר מחיקת ההרשאה לא תינתן אפשרות לשחזר אותה!<br> האם את\ה בטוח שברצונך למחוק הרשאה זו?
+  </div>
+  <div class="modal-footer">
+  	<div style="float: right;">
+  		<button type="button" class="btn btn-success" ng-click="$dismiss()">כן</button>
+  	</div>
+  	<div style="float: left;">
+  		<button type="button" class="btn btn-danger" ng-click="$close()">לא</button>
+  	</div>
+    
+    
+  </div>
+</div>

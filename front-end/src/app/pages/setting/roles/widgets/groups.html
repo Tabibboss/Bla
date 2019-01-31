@@ -1,0 +1,50 @@
+
+
+<div class="col-md-12 col-sm-12 col-xs-12 form-group vertical-scroll" style="float: right;">
+<table class="table table-bordered table-hover table-condensed">
+  <tr>
+    <th>#</th>
+    <th>שם קבוצה</th>
+    <th>צבע</th>
+    <th>אפשרויות</th>
+  </tr>
+  <tr ng-repeat="groupData in AllGroupRoles | filter:searchGroup" class="editable-row">
+    <td>{{ $index+1 }}</td>
+    <td>
+      <span editable-text="groupData.role_desc" e-name="role_desc" e-form="rowform" e-required>
+        {{ groupData.role_desc || 'empty' }}
+      </span>
+    </td>
+    <td>
+      <span editable-text="groupData.role_color" e-name="role_color" e-form="rowform" e-required>
+        {{ groupData.role_color || 'empty' }}
+      </span>
+    </td>
+
+<!--       <td class="select-td">
+          <span editable-select="groupData.sub_group_id" e-placeholder="בחר צבע" e-name="sub_group_id" onshow="loadGroups()" e-form="rowform" e-selectpicker
+                e-ng-options="g.sub_group_id as g.sub_group_desc for g in AllSubGroups">
+            {{ showColorType(groupData) }}
+          </span>
+      </td> -->
+
+    <td>
+      <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline"
+            shown="inserted == groupData">
+
+        <button type="submit" ng-disabled="rowform.$waiting" ng-click="SaveRole(rowform,groupData)" class="btn btn-success btn-icon"><i class="ion-checkmark-round"></i></button>
+        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-danger btn-icon"><i class="ion-close-round"></i></button>
+      </form>
+      <div class="buttons" ng-show="!rowform.$visible">
+        <button has-permission='884324' type="button" ng-click="rowform.$show()" class="btn btn-primary btn-icon"><i class="glyphicon glyphicon-pencil"></i></button>
+        <button has-permission='518829'  type="button" ng-click="open('app/pages/setting/roles/viewRole/viewrole.html','',groupData)" class="btn btn-info btn-icon"><i class="glyphicon glyphicon-cog"></i></button>
+        <button has-permission='637955' type="button" ng-click="AreYouSureBroToDeleteGroup(groupData,$index)" class="btn btn-danger btn-icon"><i class="glyphicon glyphicon-trash"></i></button>
+
+      </div>
+    </td>
+  </tr>
+</table>
+</div>
+
+
+

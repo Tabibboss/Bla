@@ -1,0 +1,41 @@
+
+<div class="col-md-12 col-sm-12 col-xs-12 form-group vertical-scroll" style="float: right;">
+  <table class="table table-bordered table-hover table-condensed">
+    <tr>
+      <th>#</th>
+      <th>תת קטגוריה</th>
+      <th>קטגוריה</th>
+      <th>אפשרויות</th>
+    </tr>
+    <tr ng-repeat="prem in AllSubGroups | filter:searchSubCatPrem" class="editable-row">
+      <td>{{ $index+1 }}</td>
+      <td>
+        <span editable-text="prem.sub_group_desc" e-name="sub_group_desc" e-form="rowform" e-required>
+          {{ prem.sub_group_desc || 'empty' }}
+        </span>
+      </td>
+
+      <td class="select-td">
+          <span editable-select="prem.group_id" e-placeholder="בחר קטגוריה" e-name="group_id" onshow="loadGroups()" e-form="rowform" e-selectpicker
+                e-ng-options="g.group_id as g.group_desc for g in AllGroups">
+            {{ showGroup(prem) }}
+          </span>
+      </td>
+
+      <td>
+        <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline"
+              shown="inserted == prem">
+
+          <button type="submit" ng-disabled="rowform.$waiting" ng-click="SaveSubCat(rowform,prem)" class="btn btn-success btn-icon"><i class="glyphicon glyphicon-ok"></i></button>
+          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-danger btn-icon"><i class="glyphicon glyphicon-remove"></i></button>
+        </form>
+        <div class="buttons" ng-show="!rowform.$visible">
+          <button type="button" ng-click="rowform.$show()" class="btn btn-primary btn-icon"><i class="glyphicon glyphicon-pencil"></i></button>
+<!--          <button type="button" ng-click="open('app/pages/setting/roles/viewRole/viewrole.html','',prem)" class="btn btn-info btn-icon"><i class="glyphicon glyphicon-cog"></i></button> -->
+          <button type="button" ng-click="AreYouSureBroToDeleteSubCat(prem,$index)" class="btn btn-danger btn-icon"><i class="glyphicon glyphicon-trash"></i></button>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+</div>

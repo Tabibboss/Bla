@@ -1,0 +1,273 @@
+<section ng-controller="profileCtrl" class="roles">
+
+<div ba-panel ba-panel-class="profile-page">
+
+	<div class="panel-body">
+  <div class="panel-content">
+
+	    <h3 class="with-line">כללי</h3>
+
+	    <div class="row">
+	      <div class="col-md-6 col-sm-12 col-xs-12" style="float: right;">
+	        <div class="form-group row clearfix">
+	          <div class="col-sm-12">
+	            <div class="userpic">
+	              <div class="userpic-wrapper">
+	                <img ng-src="{{ picture }}" ng-click="uploadPicture()">
+	              </div>
+	              <i class="ion-ios-close-outline" ng-click="removePicture()" ng-if="!noPicture"></i>
+	              <a href class="change-userpic" ng-click="uploadPicture()">שינוי תמונת פרופיל</a>
+	              <input type="file" ng-show="false" id="uploadFile" ng-file-select="onFileSelect($files)">
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+
+
+	      <div class="col-md-6 col-sm-12 col-xs-12" style="float: right;">
+		    <div class="form-group">
+		      
+				<label for="inputFirstName" class="col-sm-3 control-label" style="float: right;">שם פרטי</label>
+
+				<div class="col-sm-9 col-xs-12" style="float: right;">
+					<div class="input-group">
+					   <input ng-model="AllFullUserData.FirstName" check-for-chanrge="AllFullUserData.FirstName" type="text" class="form-control with-primary-addon" value="{{AllFullUserData.FirstName}}" aria-describedby="basic-addon1">
+					  <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1"></span>
+
+					</div>
+
+				</div>
+
+		    </div>
+	      </div>
+
+
+
+
+	      <div class="col-md-6 col-sm-12 col-xs-12" style="float: right;">
+		    <div class="form-group">
+		      
+				<label for="inputLastName" class="col-sm-3 control-label" style="float: right;">שם משפחה</label>
+
+				<div class="col-sm-9 col-xs-12" style="float: right;">
+					<div class="input-group">
+					   <input type="text" class="form-control with-primary-addon" ng-model="AllFullUserData.LastName" check-for-change="AllFullUserData.LastName"  value="{{AllFullUserData.LastName}}" aria-describedby="basic-addon1">
+					  <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1"></span>
+
+					</div>
+					<span class="DefaultMainValue">{{AllFullUserData.LastName}}</span>
+				</div>
+
+		    </div>
+	      </div>
+
+
+
+
+
+
+	    </div>
+
+	    <div class="row">
+
+
+
+
+
+	      <div class="col-md-6 col-sm-12 col-xs-12" style="float: right;">
+		    <div class="form-group">
+		      
+				<label for="UserName" class="col-sm-3 control-label" style="float: right;">שם משתמש</label>
+
+				<div class="col-sm-9 col-xs-12" style="float: right;">
+					<div class="input-group">
+					   <input style="text-align: left;" type="text" class="form-control with-primary-addon" value="{{AllFullUserData.UserName}}" aria-describedby="basic-addon1">
+					  <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
+
+					</div>
+				</div>
+
+		    </div>
+	      </div>
+
+
+
+
+
+	      <div class="col-md-6 col-sm-12 col-xs-12" style="float: right;">
+			  <div class="form-group">
+			  	<label for="UserName" class="col-sm-3 control-label" style="float: right;">הרשאות</label>
+			  	<div class="col-sm-9  col-xs-12" style="float: right;">
+				    <ui-select 
+				    		   multiple ng-model="AllUserGroups"
+				               ng-disabled="false"
+				               search-enabled="true"
+				               append-to-body="true"
+				               class="form-control ">
+				      <ui-select-match ng-class="{'WithLinkForNav':!$last}" placeholder="">
+				        {{$item.label}}
+				      </ui-select-match>
+				      <ui-select-choices repeat="multipleItem in AllGroups | filter: $select.search">
+				        {{multipleItem.label}}
+				      </ui-select-choices>
+				    </ui-select>
+
+				    <!-- <p>Selected: {{multipleSelectItems}}</p> -->
+				</div>
+
+			    
+
+			  </div>
+	      </div>
+
+
+	      <div class="col-md-6 col-sm-12 col-xs-12" style="float: right;">
+		    <div class="form-group">
+		      
+				<label for="inputLJob" class="col-sm-3 control-label" style="float: right;">תפקיד</label>
+
+				<div class="col-sm-9 col-xs-12" style="float: right;">
+					<div class="input-group">
+					   <input type="text" class="form-control with-primary-addon" value="נציג טלפוני" aria-describedby="basic-addon1">
+					  <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1"><i class="glyphicon glyphicon-briefcase"></i></span>
+
+					</div>
+				</div>
+
+		    </div>
+	      </div>
+
+
+
+
+	    </div>
+
+
+	    <h3 class="with-line">פרטי קשר</h3>
+
+	    <div class="row">
+	      <div class="col-md-6 col-sm-12 col-xs-12" style="float: right;">
+	        <div class="form-group row clearfix">
+	        	<label for="inputEmail3" class="col-sm-3 control-label" style="float: right;">אימייל</label>
+	          <div class="col-sm-9 col-xs-12" style="float: right;">
+
+
+					<div class="input-group">
+					   <input style="text-align: left;" type="text" class="form-control with-primary-addon" value="{{AllFullUserData.mail}}" aria-describedby="basic-addon1">
+					  <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1"><i class="fa fa fa-at"></i></span>
+
+					</div>
+
+
+
+	            <!-- <input type="email" class="form-control" id="inputEmail3" placeholder="" value="{{ AllFullUserData.mail }}"> -->
+	          </div>
+	          
+
+
+	        </div>
+	        <div class="form-group row clearfix">
+	        	<label for="inputPhone" class="col-sm-3 control-label" style="float: right;">מספר נייד</label>
+	          <div class="col-sm-9 col-xs-12" style="float: right;">
+
+					<div class="input-group">
+					   <input type="text" class="form-control with-primary-addon" value="{{AllFullUserData.PhoneNumber}}" aria-describedby="basic-addon1">
+					  <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1"><i class="glyphicon glyphicon-phone"></i></span>
+
+					</div>
+
+
+	            <!-- <input type="text" class="form-control" id="inputPhone" placeholder="" value="{{ AllFullUserData.PhoneNumber }}"> -->
+	          </div>
+	          
+
+
+	        </div>
+	      </div>
+	      <div class="col-md-6 col-sm-12 col-xs-12" style="float: right;">
+	        <div class="form-group row clearfix">
+	        	<label class="col-sm-3 control-label" style="float: right;">סניף</label>
+	          <div class="col-sm-9 col-xs-12" style="float: right;">
+	            <select class="form-control" title="Standard Select" selectpicker>
+	              <option selected="selected">ירושלים</option>
+	              <option>רחובות</option>
+	              <option>אילת</option>
+	              <option>עפולה</option>
+	            </select>
+	          </div>
+
+	          
+
+	        </div>
+	      </div>
+	    </div>
+
+
+	    <h3 class="with-line">הגדרות פרטיות</h3>
+
+	    <div class="notification row clearfix">
+	      <div class="col-sm-6">
+	        <div class="form-group row clearfix">
+	          <label class="col-xs-8" style="float: right;">קבלת התראות מערכת</label>
+
+	          <div class="col-xs-4" style="float: right;">
+	            <switch color="primary" ng-model="switches[0]"></switch>
+	          </div>
+	        </div>
+	        <div class="form-group row clearfix">
+	          <label class="col-xs-8" style="float: right;">קבלת התראות ממערכת פניות</label>
+
+	          <div class="col-xs-4" style="float: right;">
+	            <switch color="primary" ng-model="switches[1]"></switch>
+	          </div>
+	        </div>
+	        <div class="form-group row clearfix">
+	          <label class="col-xs-8" style="float: right;">קבלת התראות ממשתמשים אחרים</label>
+
+	          <div class="col-xs-4" style="float: right;">
+	            <switch color="primary" ng-model="switches[2]"></switch>
+	          </div>
+	        </div>
+	      </div>
+	      <div class="col-sm-6">
+	        <div class="form-group row clearfix">
+	          <label class="col-xs-8" style="float: right;">התראה נוספת על סיום הטבה</label>
+
+	          <div class="col-xs-4" style="float: right;">
+	            <switch color="primary" ng-model="switches[3]"></switch>
+	          </div>
+	        </div>
+	        <div class="form-group row clearfix">
+	          <label class="col-xs-8" style="float: right;">התראה על סיום יעד מכירות</label>
+
+	          <div class="col-xs-4" style="float: right;">
+	            <switch color="primary" ng-model="switches[4]"></switch>
+	          </div>
+	        </div>
+
+	        <div class="form-group row clearfix">
+	          <label class="col-xs-8" style="float: right;">התראה על כל בונוס שאני מקבל</label>
+
+	          <div class="col-xs-4" style="float: right;">
+	            <switch color="primary" ng-model="switches[5]"></switch>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	    <button ng-click="sumbitUserProfile()" type="button" class="btn btn-primary btn-with-icon save-profile">
+	      <i class="ion-android-checkmark-circle"></i>עדכן
+	    </button>
+	  </div>
+	</div>
+
+	
+</div>
+
+
+
+
+	
+
+
+
+</section>

@@ -1,0 +1,31 @@
+
+<script>
+$('body').prepend('<div id="stars" class="ng-scope"></div>\
+<div id="stars2" class="ng-scope"></div>\
+<div id="stars3" class="ng-scope"></div>');
+</script>
+
+<div class="login" ng-controller="authSignInCtrl as signInVm">
+  <main class="auth-main">
+    <div class="auth-block">
+      <a href="" class="al-logo clearfix">TabiB<span>BosS</span></a>
+      <form class="form-horizontal" ng-submit="signInVm.logar()">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" ng-model="signInVm.user" class="form-control" id="inputEmail3" placeholder="שם משתמש" autocomplete="off">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="password" ng-model="signInVm.passWord" class="form-control" id="inputPassword3" placeholder="סיסמה">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <button type="submit" class="col-sm-12 btn btn-default btn-auth">התחבר</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>

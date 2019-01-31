@@ -1,0 +1,108 @@
+<div class="widgets">
+
+  <div class="row">
+
+
+
+
+    <div class="col-md-6" style="float: right;">
+      <div ba-panel ba-panel-title="קבוצות" ba-panel-class="with-scroll">
+
+
+        <div class="add-row-editable-table">
+<!--           <form class="form-inline">
+            <div class="form-group">
+            <label>First name</label>
+              <input type="text" class="form-control" placeholder="Digitar nombre..." ng-model="nuevoUsuario.nombreUsuario">
+            </div>
+            <div class="form-group">
+              <label>Age</label>
+              <input type="number" class="form-control" placeholder="Digitar edad..." ng-model="nuevoUsuario.edad">
+            </div>
+            <button class="btn btn-default" ng-click="agregarUsuario()">Add User</button>
+          </form> -->
+
+          <button class="btn btn-primary" ng-click="addUser()">קבוצה חדשה</button>
+        </div>
+
+
+        <table class="table table-bordered table-hover table-condensed">
+          <tr>
+            <td></td>
+            <td>שם קבוצה</td>
+            <td>תיאור קבוצה</td>
+            <td>אפשרויות</td>
+          </tr>
+          <tr ng-repeat="usuario in usuarios" class="editable-row">
+<!--             <td>{{ $index+1 }}</td>
+            <td>{{ usuario.role_desc }}</td>
+            <td>{{ usuario.role_name }}</td>
+            <td>
+              <div class="buttons">
+                <button class="btn btn-primary editable-table-button btn-xs" ng-click="borrarUsuario(usuario.id)">עריכה</button>
+                <button class="btn btn-info editable-table-button btn-xs" ng-click="borrarUsuario(usuario.id)">צפייה</button>
+              </div>
+            </td> -->
+
+    <td>
+        {{usuario.role_id}}
+        <!-- {{$index+1}} -->
+    </td>
+    <td>
+        <span editable-text="usuario.role_desc" e-name="role_desc" e-form="rowform" e-required>
+          {{ usuario.role_desc || 'empty' }}
+        </span>
+    </td>
+    <td>
+        <span editable-text="usuario.role_name" e-name="role_name" e-form="rowform" e-required>
+          {{ usuario.role_name || 'empty' }}
+        </span>
+    </td>
+
+    <td>
+      <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline"
+            shown="inserted == usuario">
+        <button type="submit" ng-disabled="rowform.$waiting" ng-click="SaveRole(rowform,usuario)" class="btn btn-success editable-table-button btn-xs">
+          שמירה
+        </button>
+        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-danger editable-table-button btn-xs">
+          ביטול
+        </button>
+      </form>
+      <div class="buttons" ng-show="!rowform.$visible">
+        <button class="btn btn-primary editable-table-button btn-xs" ng-click="rowform.$show()">עריכה</button>
+        <button class="btn btn-info editable-table-button btn-xs" ng-click="">צפייה</button>
+        <!-- <button class="btn btn-info editable-table-button btn-xs" ng-click="removeUser($index)">צפייה</button> -->
+      </div>
+    </td>
+
+
+
+
+
+
+
+
+
+          </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div class="col-md-6" style="float: right;">
+      <div ba-panel ba-panel-title="צפייה" ba-panel-class="with-scroll">
+        <div ng-include="'app/pages/setting/roles/switches/switch.html'"></div>
+      </div>
+
+
+    </div>
+
+
+
+
+
+  </div>
+
+</div>

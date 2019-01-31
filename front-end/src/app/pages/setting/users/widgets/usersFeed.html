@@ -1,0 +1,55 @@
+
+<div class="col-md-12 col-sm-12 col-xs-12 form-group vertical-scroll FixBtbForFeeds" style="float: right;padding-right: 0;
+    padding-left: 0;">
+  <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
+    <div class="feed-message" ng-repeat="message in AllUsers | filter:searchUserr" style="overflow-y: auto;">
+      <div class="message-icon">
+        <img class="photo-icon" ng-src="{{::( message.id | profilePicture )}}">
+      </div>
+      <div class="text-block text-message" style="cursor: auto;padding: 13px 0px 5px 0px;">
+
+        <div class="message-header col-md-6" style="float: right;">
+          <span class="author" style="font-size: 25px;">
+            {{ ::message.FirstName }} {{ ::message.LastName}}
+          </span>
+        </div>
+
+        <div class="message-header col-md-6" style="float: right;text-align: left;direction: ltr;">
+          <span class="author" style="font-size: 25px;">
+            @{{ ::message.UserName }}
+          </span>
+        </div>
+
+        <div class="message-content  col-md-6" style="float: right;">
+          <div class="bootstrap-tagsinput fixTagLebelForUsers" ng-bind-html="message.roles"></div>
+        </div>
+
+        <div class="message-content  col-md-6" style="float: right;">
+<!--             <div class="input-group" style="direction: ltr;">
+              <button type="button" ng-click="open('app/pages/setting/roles/viewRole/viewrole.html','',prem)" class="btn btn-info btn-icon"><i class="glyphicon glyphicon-cog"></i></button>
+              <button has-permission='606830' type="button" ng-click="AreYouSureBroToDeletePrem(prem,$index)" class="btn btn-danger btn-icon"><i class="glyphicon glyphicon-trash"></i></button>
+            </div> -->
+<!-- ng-click="open('app/pages/setting/users/userSetting/userSetting2.html','',message)" -->
+
+              <span class="input-group-btn" uib-dropdown dropdown-append-to-body style="direction: ltr;">
+                  <button type="button"  ui-sref="main.setting.users.UserProfile({ id: message.id })"  class="btn btn-info btn-icon"><i class="glyphicon glyphicon-cog"></i></button>
+                <button type="button" class="btn btn-primary btn-icon" uib-dropdown-toggle>
+          <i class="ion-navicon-round"></i>
+                </button>
+                <ul uib-dropdown-menu>
+                  <li><a href>הרשאה חדשה</a></li>
+                  <li><a href>ניהול הרשאות</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href>הגדרות</a></li>
+                </ul>
+                  
+              </span>
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

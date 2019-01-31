@@ -1,0 +1,45 @@
+<div class="widgets">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div ba-panel ba-panel-title="Usuarios" ba-panel-class="with-scroll">
+
+
+        <div class="add-row-editable-table">
+          <form class="form-inline">
+            <div class="form-group">
+            <label>First name</label>
+              <input type="text" class="form-control" placeholder="Digitar nombre..." ng-model="nuevoUsuario.nombreUsuario">
+            </div>
+            <div class="form-group">
+              <label>Age</label>
+              <input type="number" class="form-control" placeholder="Digitar edad..." ng-model="nuevoUsuario.edad">
+            </div>
+            <button class="btn btn-default" ng-click="agregarUsuario()">Add User</button>
+          </form>
+        </div>
+
+
+        <table class="table table-bordered table-hover table-condensed">
+          <tr>
+            <td></td>
+            <td>First name</td>
+            <td>Age</td>
+            <td>Actions</td>
+          </tr>
+          <tr ng-repeat="usuario in usuarios" class="editable-row">
+            <td>{{ $index+1 }}</td>
+            <td>{{ usuario.nombreUsuario }}</td>
+            <td>{{ usuario.edad }}</td>
+            <td>
+              <div class="buttons">
+                <button class="btn btn-danger editable-table-button btn-xs" ng-click="borrarUsuario(usuario.id)">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

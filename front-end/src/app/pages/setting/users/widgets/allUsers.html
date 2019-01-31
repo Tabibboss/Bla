@@ -1,0 +1,64 @@
+
+<div class="col-md-12 col-sm-12 col-xs-12 form-group vertical-scroll" style="float: right;">
+<table class="table table-bordered table-hover table-condensed">
+  <tr>
+    <th>#</th>
+    <th>שם משתמש</th>
+    <th>שם פרטי</th>
+    <th>שם משפחה</th>
+    <th>סיסמה</th>
+    <th>קבוצות</th>
+    <th>אפשרויות</th>
+  </tr>
+  <tr ng-repeat="userData in AllUsers | filter:searchUser" class="editable-row">
+    <td>{{ $index+1 }}</td>
+    <td>
+      <span editable-text="userData.UserName" e-name="UserName" e-form="rowform" e-required>
+        {{ userData.UserName || '' }}
+      </span>
+    </td>
+    <td>
+      <span editable-text="userData.FirstName" e-name="FirstName" e-form="rowform" e-required>
+        {{ userData.FirstName || '' }}
+      </span>
+    </td>
+    <td>
+      <span editable-text="userData.LastName" e-name="LastName" e-form="rowform" e-required>
+        {{ userData.LastName || '' }}
+      </span>
+    </td>
+    <td>
+      <span editable-text="userData.Password" e-name="Password" e-form="rowform" e-required>
+        {{ userData.Password || '' }}
+      </span>
+    </td>
+    <td>
+      
+<!--       <span ng-reapet="tyttt in AllGroupRoles">{{ tyttt.id}}
+        <button type="button" class="btn btn-default btn-xs">{{ tyttt}}</button>
+      </span> -->
+      
+        {{ userData.roles1 || '' }}
+     
+    </td>
+
+    <td>
+      <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline"
+            shown="inserted == userData">
+
+        <button type="submit" ng-disabled="rowform.$waiting" ng-click="SaveUser(rowform,userData)" class="btn btn-success btn-icon"><i class="ion-checkmark-round"></i></button>
+        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-danger btn-icon"><i class="ion-close-round"></i></button>
+      </form>
+      <div class="buttons" ng-show="!rowform.$visible">
+        <button has-permission='884324' type="button" ng-click="rowform.$show()" class="btn btn-primary btn-icon"><i class="glyphicon glyphicon-pencil"></i></button>
+        <button has-permission='518829'  type="button" ng-click="open('app/pages/setting/roles/viewRole/viewrole.html','',userData)" class="btn btn-info btn-icon"><i class="glyphicon glyphicon-cog"></i></button>
+        <button has-permission='637955' type="button" ng-click="AreYouSureBroToDeleteUser(userData,$index)" class="btn btn-danger btn-icon"><i class="glyphicon glyphicon-trash"></i></button>
+
+      </div>
+    </td>
+  </tr>
+</table>
+</div>
+
+
+

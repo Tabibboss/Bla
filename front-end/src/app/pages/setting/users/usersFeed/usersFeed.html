@@ -1,0 +1,23 @@
+
+<div class="feed-messages-container " track-width="smallContainerWidth" min-width="360">
+  <div class="feed-message" ng-repeat="message in AllUsers" ng-click="expandMessage(message)">
+    <div class="message-icon">
+      <img class="photo-icon" ng-src="{{::( message.id | profilePicture )}}">
+    </div>
+    <div class="text-block text-message">
+
+      <div class="message-header">
+        <span class="author">{{ ::message.FirstName }} {{ ::message.LastName}}</span>
+      </div>
+
+      <div class="message-content line-clamp" ng-class="{'line-clamp-2' : !message.expanded}">
+        {{::message.roles}}
+      </div>
+
+      <div ng-show="message.expanded" ng-if="message.expanded">
+        {{::message.roles}} 66
+      </div>
+
+    </div>
+  </div>
+</div>

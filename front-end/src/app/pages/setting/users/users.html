@@ -1,0 +1,85 @@
+<!-- <div ui-view="allusers"> -->
+  <div ui-view>
+    
+ 
+  <section ng-controller="usersCtrl" class="roles">
+    <div class="widgets">
+
+
+
+
+    <div class="row">
+
+      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="float: right;" has-permission="674509">
+        <div ng-model="AllUsers" ba-panel ba-panel-class="with-scroll">
+
+
+
+          <div class="panel-heading clearfix">
+
+            <div class="col-md-6 col-sm-6 col-xs-6 form-group vertical-scroll" style="float: right;">
+              <h3 class="panel-title ng-binding">{{AllUsers.length}} משתמשים</h3>
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-6 form-group vertical-scroll" style="float: right;margin-top: -9px;">
+              <div class="input-group">
+                <input type="text" class="form-control with-warning-addon" ng-model="searchUserr" placeholder="חיפוש משתמש">
+                <span class="input-group-btn">
+                    <button type="button" ng-click="addUser()" class="btn btn-warning btn-icon"><i class="ion-plus-round"></i></button>
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="panel-body">
+              <div ng-include="'app/pages/setting/users/widgets/allUsers.html'"></div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="float: right;" has-permission="674509">
+        <div ng-model="AllUsers" ba-panel ba-panel-class="with-scroll">
+
+          <div class="panel-heading clearfix">
+
+            <div class="col-md-6 col-sm-6 col-xs-6 form-group vertical-scroll" style="float: right;">
+              <h3 class="panel-title ng-binding">{{AllUsers.length}} משתמשים</h3>
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-6 form-group vertical-scroll" style="float: right;margin-top: -9px;">
+              <div class="input-group">
+                <input type="text" class="form-control with-warning-addon" ng-model="searchUserr" placeholder="חיפוש משתמש">
+                <span class="input-group-btn">
+                    <button type="button" ng-click="addUser()" class="btn btn-warning btn-icon"><i class="ion-plus-round"></i></button>
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="panel-body">
+              <div ng-include="'app/pages/setting/users/widgets/usersFeed.html'"></div>
+          </div>
+
+  <!--                 
+          <div panel-heading clearfix>
+            I can have markup, too! <i class="fa pull-right ion-settings"></i>
+            {{AllUsers.length}} משתמשים
+          </div panel-heading> -->
+          
+          <!-- <users-feed></users-feed> -->
+        </div>
+      </div>
+
+
+    </div>
+    
+
+
+
+  </div>
+  </section>
+ </div>
+<!-- </div> -->

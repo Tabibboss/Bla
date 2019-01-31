@@ -1,0 +1,146 @@
+<section ng-controller="viewRoleCtrl">
+
+
+
+<div class="modal-content" ng-model="MyRole">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">ניהול הקבוצה {{MyRole.role_desc}}</h4>
+  </div>
+  <div class="modal-body">
+
+
+
+
+
+<uib-accordion ng-model="MyRoleData" close-others="false">
+        <uib-accordion-group is-open="true"  ng-model="ColorType" panel-class="panel-{{ColorType[indexCat]}} bootstrap-panel accordion-panel lists-widget" ng-repeat="(indexCat, RoleData) in MyRoleData | groupBy: 'group_id'"  style="background-color:rgba(0,0,0,0);">
+
+
+             <uib-accordion-heading>
+             {{RoleData.group_desc}}
+            </uib-accordion-heading>
+
+
+        </uib-accordion-group>
+
+
+      </uib-accordion>
+
+
+
+
+
+
+
+
+
+  </div>
+  <div class="modal-footer">
+    סוף
+  </div>
+</div>
+
+
+
+
+<!-- 
+
+  <div class="col-md-12 col-lg-12" ng-model="MyRole">
+    <div ba-panel ba-panel-title="ניהול {{MyRole.role_desc}}" ba-panel-class="extra-medium-panel light-text">
+      <uib-accordion ng-model="AllGroupsCats" close-others="false">
+        <uib-accordion-group ng-model="ColorType" panel-class="panel-{{ColorType[index]}} bootstrap-panel accordion-panel lists-widget" ng-repeat="(index, thing) in AllGroupsCats"  style="background-color:rgba(0,0,0,0);">
+
+
+             <uib-accordion-heading>
+             {{thing}}
+            </uib-accordion-heading>
+
+          <div ng-repeat="row in MyRoleData | filter:{ group_id: index }" >
+            <div class="col-md-12" style="float: left;">
+              <div class="accent">{{thing}}</div>
+            </div>
+            <div class="col-md-4" style="float: left;">
+               <ba-switcherr update-switch-roles="UpdateSwitchRoles(perm_id,perm_val,cat_id)" switcher-style="{{ColorType[index]}}" switcher-value="row.status" switcher-id="row.perm_id" switcher-cat="MyRole.role_id"></ba-switcherr>
+              
+
+            </div>
+              
+            <div class="col-md-8" style="float: right; color: #ffffff;text-align: right;">
+              {{row.perm_desc}}
+              {{row.perm_id}}
+            </div>
+
+            <div style="clear: both;"></div>
+
+          </div>
+        </uib-accordion-group>
+
+
+      </uib-accordion>
+    </div>
+  </div>
+
+ -->
+
+
+
+
+
+
+
+<!-- 
+<uib-accordion>
+  <uib-accordion-group heading="Primary" panel-class="panel-primary bootstrap-panel accordion-panel">
+    Primary <i class="ion-heart"></i>
+  </uib-accordion-group>
+  <uib-accordion-group heading="Success" panel-class="panel-success bootstrap-panel accordion-panel">
+    Success <i class="ion-checkmark-round"></i>
+  </uib-accordion-group>
+  <uib-accordion-group heading="Info" panel-class="panel-info bootstrap-panel accordion-panel">
+    Info <i class="ion-information-circled"></i>
+  </uib-accordion-group>
+  <uib-accordion-group heading="Warning" panel-class="panel-warning bootstrap-panel accordion-panel">
+    Warning <i class="ion-alert"></i>
+  </uib-accordion-group>
+  <uib-accordion-group  heading="Danger"  panel-class="panel-danger bootstrap-panel accordion-panel">
+    Danger <i class="ion-nuclear"></i>
+  </uib-accordion-group>
+</uib-accordion>
+
+
+ -->
+
+
+
+<!-- 
+<div class="modal-content" ng-model="MyRole">
+  <div class="modal-header bg-info">
+    <span style="font-size: 19px;float: right;">ניהול {{MyRole.role_desc}}</span>
+  </div>
+
+  <div class="modal-body text-center">
+
+
+
+
+
+
+
+<div ng-include="'app/pages/setting/roles/viewRole/switches/switch.html'"></div>
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-info" ng-click="$dismiss()">OK</button>
+  </div>
+</div>
+
+
+ -->
+
+
+
+<section>
